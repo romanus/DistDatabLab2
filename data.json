@@ -1,45 +1,46 @@
-{"items": [
-    {
-        "category" : "Phone",
-        "model" : "iPhone 6",
-        "producer" : "Apple",
-        "price" : 600
-    }
-    ,{
-        "category" : "Phone",
-        "model" : "iPhone 7",
-        "producer" : "Apple",
-        "price" : 700
-    }
-    ,{
-        "category" : "TV",
-        "model" : "Apple TV 4",
-        "producer" : "Apple",
-        "price" : 300
-    }
-    ,{
-        "category" : "TV",
-        "model" : "Apple TV 4k",
-        "producer" : "Apple",
-        "price" : 350
-    }
-    ,{
-        "category" : "Smart Watch",
-        "model" : "Apple Watch Series 3",
-        "producer" : "Apple",
-        "price" : 250
-    }
-    ,{
-        "category" : "Smart Watch",
-        "model" : "Apple Watch Series 4",
-        "producer" : "Apple",
-        "price" : 300
-    }
-    ,{
-        "category" : "Phone",
-        "model" : "Pixel 3",
-        "producer" : "Google",
-        "price" : 700
-    }
+{
+    "items": [
+        {
+            "category" : "Phone",
+            "model" : "iPhone 6",
+            "producer" : "Apple",
+            "price" : 600
+        }
+        ,{
+            "category" : "Phone",
+            "model" : "iPhone 7",
+            "producer" : "Apple",
+            "price" : 700
+        }
+        ,{
+            "category" : "TV",
+            "model" : "Apple TV 4",
+            "producer" : "Apple",
+            "price" : 300
+        }
+        ,{
+            "category" : "TV",
+            "model" : "Apple TV 4k",
+            "producer" : "Apple",
+            "price" : 350
+        }
+        ,{
+            "category" : "Smart Watch",
+            "model" : "Apple Watch Series 3",
+            "producer" : "Apple",
+            "price" : 250
+        }
+        ,{
+            "category" : "Smart Watch",
+            "model" : "Apple Watch Series 4",
+            "producer" : "Apple",
+            "price" : 300
+        }
+        ,{
+            "category" : "Phone",
+            "model" : "Pixel 3",
+            "producer" : "Google",
+            "price" : 700
+        }
     ]
 }

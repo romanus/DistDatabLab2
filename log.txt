@@ -1,0 +1,64 @@
+Connected to the cluster!
+
+---- PART 1 START---- 
+
+1. Створіть декілька товарів з різним набором властивостей Phone/TV/Smart Watch/ .... 
+Data inserted:[{"category":"Phone","model":"iPhone 6","producer":"Apple","price":600,"_id":"5c72de62744d8aaf5ffb1eb9"},{"category":"Phone","model":"iPhone 7","producer":"Apple","price":700,"_id":"5c72de62744d8aaf5ffb1eba"},{"category":"TV","model":"Apple TV 4","producer":"Apple","price":300,"_id":"5c72de62744d8aaf5ffb1ebb"},{"category":"TV","model":"Apple TV 4k","producer":"Apple","price":350,"_id":"5c72de62744d8aaf5ffb1ebc"},{"category":"Smart Watch","model":"Apple Watch Series 3","producer":"Apple","price":250,"_id":"5c72de62744d8aaf5ffb1ebd"},{"category":"Smart Watch","model":"Apple Watch Series 4","producer":"Apple","price":300,"_id":"5c72de62744d8aaf5ffb1ebe"},{"category":"Phone","model":"Pixel 3","producer":"Google","price":700,"_id":"5c72de62744d8aaf5ffb1ebf"}]
+
+2.Напишіть запит, який виводіть усі товари (відображення у JSON)
+Data fetched:[{"_id":"5c72de62744d8aaf5ffb1eb9","category":"Phone","model":"iPhone 6","producer":"Apple","price":600},{"_id":"5c72de62744d8aaf5ffb1eba","category":"Phone","model":"iPhone 7","producer":"Apple","price":700},{"_id":"5c72de62744d8aaf5ffb1ebb","category":"TV","model":"Apple TV 4","producer":"Apple","price":300},{"_id":"5c72de62744d8aaf5ffb1ebc","category":"TV","model":"Apple TV 4k","producer":"Apple","price":350},{"_id":"5c72de62744d8aaf5ffb1ebd","category":"Smart Watch","model":"Apple Watch Series 3","producer":"Apple","price":250},{"_id":"5c72de62744d8aaf5ffb1ebe","category":"Smart Watch","model":"Apple Watch Series 4","producer":"Apple","price":300},{"_id":"5c72de62744d8aaf5ffb1ebf","category":"Phone","model":"Pixel 3","producer":"Google","price":700}]
+
+3. Підрахуйте скільки товарів у певної категорії
+Phones count: 3
+
+4. Підрахуйте скільки є різних категорій товарів
+Categories count: 3
+
+5. Напишіть запити, які вибирають товари за різними критеріям і їх сукупності: 
+
+a) категорія та ціна (в проміжку)
+[{"_id":"5c72de62744d8aaf5ffb1eba","category":"Phone","model":"iPhone 7","producer":"Apple","price":700},{"_id":"5c72de62744d8aaf5ffb1ebf","category":"Phone","model":"Pixel 3","producer":"Google","price":700}]
+
+b) розмір (наприклад розмір взуття або діагональ екрану) або модель
+[{"_id":"5c72de62744d8aaf5ffb1ebf","category":"Phone","model":"Pixel 3","producer":"Google","price":700}]
+
+c) конструкція з використанням in
+[{"_id":"5c72de62744d8aaf5ffb1eb9","category":"Phone","model":"iPhone 6","producer":"Apple","price":600},{"_id":"5c72de62744d8aaf5ffb1eba","category":"Phone","model":"iPhone 7","producer":"Apple","price":700},{"_id":"5c72de62744d8aaf5ffb1ebd","category":"Smart Watch","model":"Apple Watch Series 3","producer":"Apple","price":250},{"_id":"5c72de62744d8aaf5ffb1ebe","category":"Smart Watch","model":"Apple Watch Series 4","producer":"Apple","price":300},{"_id":"5c72de62744d8aaf5ffb1ebf","category":"Phone","model":"Pixel 3","producer":"Google","price":700}]
+
+6. Виведіть список всіх виробників товарів без повторів
+Producers: ["Apple","Google"]
+
+7. Оновить певні товари, змінивши існуючі значення і додайте нові властивості (характеристики) товару за певним критерієм
+[{"_id":"5c72de62744d8aaf5ffb1eb9","category":"Phone","model":"iPhone 6","producer":"Apple","price":690,"screen_size":null},{"_id":"5c72de62744d8aaf5ffb1eba","category":"Phone","model":"iPhone 7","producer":"Apple","price":700,"screen_size":null},{"_id":"5c72de62744d8aaf5ffb1ebb","category":"TV","model":"Apple TV 4","producer":"Apple","price":300},{"_id":"5c72de62744d8aaf5ffb1ebc","category":"TV","model":"Apple TV 4k","producer":"Apple","price":350},{"_id":"5c72de62744d8aaf5ffb1ebd","category":"Smart Watch","model":"Apple Watch Series 3","producer":"Apple","price":250},{"_id":"5c72de62744d8aaf5ffb1ebe","category":"Smart Watch","model":"Apple Watch Series 4","producer":"Apple","price":300},{"_id":"5c72de62744d8aaf5ffb1ebf","category":"Phone","model":"Pixel 3","producer":"Google","price":700,"screen_size":null}]
+
+8. Знайдіть товари у яких є (присутнє поле) певні властивості
+[{"_id":"5c72de62744d8aaf5ffb1eb9","category":"Phone","model":"iPhone 6","producer":"Apple","price":690,"screen_size":null},{"_id":"5c72de62744d8aaf5ffb1eba","category":"Phone","model":"iPhone 7","producer":"Apple","price":700,"screen_size":null},{"_id":"5c72de62744d8aaf5ffb1ebf","category":"Phone","model":"Pixel 3","producer":"Google","price":700,"screen_size":null}]
+
+9. Для знайдених товарів збільшіть їх вартість на певну суму
+Document before: {"_id":"5c72de62744d8aaf5ffb1eb9","category":"Phone","model":"iPhone 6","producer":"Apple","price":690,"screen_size":null}
+Document after: {"_id":"5c72de62744d8aaf5ffb1eb9","category":"Phone","model":"iPhone 6","producer":"Apple","price":680,"screen_size":null}
+
+---- PART 1 END ---- 
+
+---- PART 2 START---- 
+
+1. Створіть кілька замовлень з різними наборами товарів, але так щоб один з товарів був у декількох замовленнях
+
+2. Виведіть всі замовлення
+Count: 3
+[{"_id":"5c72de63744d8aaf5ffb1ec0","order_number":201513,"date":null,"total_sum":1500,"customer":{"name":"Andrii","surname":"Rodinov","phones":[9876543,1234567],"address":"PTI, Peremohy 37, Kyiv, UA"},"payment":{"card_owner":"Andrii Rodionov","cardId":12345678},"order_items_id":[{"$ref":"items","$id":{"_id":"5c72de62744d8aaf5ffb1eb9","category":"Phone","model":"iPhone 6","producer":"Apple","price":680,"screen_size":null},"$db":""},{"$ref":"items","$id":{"_id":"5c72de62744d8aaf5ffb1eba","category":"Phone","model":"iPhone 7","producer":"Apple","price":700,"screen_size":null},"$db":""}]},{"_id":"5c72de63744d8aaf5ffb1ec1","order_number":201514,"date":null,"total_sum":2000,"customer":{"name":"Andrii","surname":"Rodinov","phones":[9876543,1234567],"address":"PTI, Peremohy 37, Kyiv, UA"},"payment":{"card_owner":"Andrii Rodionov","cardId":12345678},"order_items_id":[{"$ref":"items","$id":{"_id":"5c72de62744d8aaf5ffb1ebb","category":"TV","model":"Apple TV 4","producer":"Apple","price":300},"$db":""}]},{"_id":"5c72de63744d8aaf5ffb1ec2","order_number":201515,"date":"2019-02-24T18:11:47.329Z","total_sum":2500,"customer":{"name":"Teodor","surname":"Romanus","phones":[1234567],"address":"42 Vulytsya str., Lviv, UA"},"payment":{"card_owner":"Andrii Rodionov","cardId":12345678},"order_items_id":[{"$ref":"items","$id":{"_id":"5c72de62744d8aaf5ffb1eba","category":"Phone","model":"iPhone 7","producer":"Apple","price":700,"screen_size":null},"$db":""},{"$ref":"items","$id":{"_id":"5c72de62744d8aaf5ffb1ebb","category":"TV","model":"Apple TV 4","producer":"Apple","price":300},"$db":""}]}]
+
+3. Виведіть замовлення з вартістю більше певного значення
+Count: 1
+[{"_id":"5c72de63744d8aaf5ffb1ec2","order_number":201515,"date":"2019-02-24T18:11:47.329Z","total_sum":2500,"customer":{"name":"Teodor","surname":"Romanus","phones":[1234567],"address":"42 Vulytsya str., Lviv, UA"},"payment":{"card_owner":"Andrii Rodionov","cardId":12345678},"order_items_id":[{"$ref":"items","$id":{"_id":"5c72de62744d8aaf5ffb1eba","category":"Phone","model":"iPhone 7","producer":"Apple","price":700,"screen_size":null},"$db":""},{"$ref":"items","$id":{"_id":"5c72de62744d8aaf5ffb1ebb","category":"TV","model":"Apple TV 4","producer":"Apple","price":300},"$db":""}]}]
+
+4. Знайдіть замовлення зроблені одним замовником
+Count: 2
+[{"_id":"5c72de63744d8aaf5ffb1ec0","order_number":201513,"date":null,"total_sum":1500,"customer":{"name":"Andrii","surname":"Rodinov","phones":[9876543,1234567],"address":"PTI, Peremohy 37, Kyiv, UA"},"payment":{"card_owner":"Andrii Rodionov","cardId":12345678},"order_items_id":[{"$ref":"items","$id":{"_id":"5c72de62744d8aaf5ffb1eb9","category":"Phone","model":"iPhone 6","producer":"Apple","price":680,"screen_size":null},"$db":""},{"$ref":"items","$id":{"_id":"5c72de62744d8aaf5ffb1eba","category":"Phone","model":"iPhone 7","producer":"Apple","price":700,"screen_size":null},"$db":""}]},{"_id":"5c72de63744d8aaf5ffb1ec1","order_number":201514,"date":null,"total_sum":2000,"customer":{"name":"Andrii","surname":"Rodinov","phones":[9876543,1234567],"address":"PTI, Peremohy 37, Kyiv, UA"},"payment":{"card_owner":"Andrii Rodionov","cardId":12345678},"order_items_id":[{"$ref":"items","$id":{"_id":"5c72de62744d8aaf5ffb1ebb","category":"TV","model":"Apple TV 4","producer":"Apple","price":300},"$db":""}]}]
+
+5. Знайдіть всі замовлення з певним товаром (товарами) (шукати можна по ObjectId)
+Count: 1
+[{"_id":"5c72de63744d8aaf5ffb1ec0","order_number":201513,"date":null,"total_sum":1500,"customer":{"name":"Andrii","surname":"Rodinov","phones":[9876543,1234567],"address":"PTI, Peremohy 37, Kyiv, UA"},"payment":{"card_owner":"Andrii Rodionov","cardId":12345678},"order_items_id":[{"$ref":"items","$id":{"_id":"5c72de62744d8aaf5ffb1eb9","category":"Phone","model":"iPhone 6","producer":"Apple","price":680,"screen_size":null},"$db":""},{"$ref":"items","$id":{"_id":"5c72de62744d8aaf5ffb1eba","category":"Phone","model":"iPhone 7","producer":"Apple","price":700,"screen_size":null},"$db":""}]}]
+
+---- PART 2 END---- 
+Connection closed!

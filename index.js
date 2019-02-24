@@ -1,10 +1,12 @@
 const MongoClient = require('mongodb').MongoClient
+const DBRef = require('mongodb').DBRef
 const uri = "mongodb+srv://user:8r3KcSM9AZuqEwybvBtjRTaa@cluster0-o7srs.mongodb.net/test?retryWrites=true"
 const client = new MongoClient(uri, { useNewUrlParser: true })
 var data = require('./data.json')
 
 const names = {
-	items: "items"
+	items: "items",
+	orders: "orders"
 }
 
 client.connect(err => {
@@ -94,8 +96,92 @@ async function do_homework(db){
 
 	console.log("\n---- PART 1 END ---- ")
 
-	await db.collection(names.items).deleteMany({})
-}
+	console.log("\n---- PART 2 START---- ")
 
-async function part2(db){
+	console.log("\n1. Створіть кілька замовлень з різними наборами товарів, але так щоб один з товарів був у декількох замовленнях")
+	console.log("\n2. Виведіть всі замовлення")
+	const items_remote_fixed = await db.collection(names.items).find({}).toArray()
+	const orders_local = [
+		{    
+			"order_number" : 201513,
+			"date" : new Date().toISOString()-100,
+			"total_sum" : 1500,
+			"customer" : {
+				"name" : "Andrii",
+				"surname" : "Rodinov",
+				"phones" : [ 9876543, 1234567],
+				"address" : "PTI, Peremohy 37, Kyiv, UA"
+			},
+			"payment" : {
+				"card_owner" : "Andrii Rodionov",
+				"cardId" : 12345678
+			},
+			"order_items_id" : [
+				new DBRef(names.items, items_remote_fixed[0]),
+				new DBRef(names.items, items_remote_fixed[1])
+			]
+		}
+		,{    
+			"order_number" : 201514,
+			"date" : new Date().toISOString()-50,
+			"total_sum" : 2000,
+			"customer" : {
+				"name" : "Andrii",
+				"surname" : "Rodinov",
+				"phones" : [ 9876543, 1234567],
+				"address" : "PTI, Peremohy 37, Kyiv, UA"
+			},
+			"payment" : {
+				"card_owner" : "Andrii Rodionov",
+				"cardId" : 12345678
+			},
+			"order_items_id" : [
+				new DBRef(names.items, items_remote_fixed[2])
+			]
+		}
+		,{    
+			"order_number" : 201515,
+			"date" : new Date().toISOString(),
+			"total_sum" : 2500,
+			"customer" : {
+				"name" : "Teodor",
+				"surname" : "Romanus",
+				"phones" : [ 1234567],
+				"address" : "42 Vulytsya str., Lviv, UA"
+			},
+			"payment" : {
+				"card_owner" : "Andrii Rodionov",
+				"cardId" : 12345678
+			},
+			"order_items_id" : [
+				new DBRef(names.items, items_remote_fixed[1]),
+				new DBRef(names.items, items_remote_fixed[2])
+			]
+		}
+	]
+
+	await db.collection(names.orders).insertMany(orders_local)
+	const all_orders = await db.collection(names.orders).find({}).toArray()
+	console.log("Count: " + all_orders.length)
+	console.log(JSON.stringify(all_orders))
+
+	console.log("\n3. Виведіть замовлення з вартістю більше певного значення")
+	const orders_expensive = await db.collection(names.orders).find({"total_sum": {$gt: 2000}}).toArray()
+	console.log("Count: " + orders_expensive.length)
+	console.log(JSON.stringify(orders_expensive))
+
+	console.log("\n4. Знайдіть замовлення зроблені одним замовником")
+	const single_customer = await db.collection(names.orders).find({"customer" : orders_local[0]["customer"]}).toArray()
+	console.log("Count: " + single_customer.length)
+	console.log(JSON.stringify(single_customer))
+
+	console.log("\n5. Знайдіть всі замовлення з певним товаром (товарами) (шукати можна по ObjectId)")
+	const objid_search = await db.collection(names.orders).find({"order_items_id": {$elemMatch : {"$id": items_remote_fixed[0]}}}).toArray()
+	console.log("Count: " + objid_search.length)
+	console.log(JSON.stringify(objid_search))
+
+	console.log("\n---- PART 2 END---- ")
+
+	await db.collection(names.items).deleteMany({})
+	await db.collection(names.orders).deleteMany({})
 }
